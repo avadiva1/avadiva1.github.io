@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DORFHAUS — 일산 밤리단길. 넓은 통창과 따뜻한 공간, 맛있는 커피와 디저트. 반려동물 환영.">
+<title>DORFHAUS — 일산 밤리단길</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Serif+KR:wght@300;400;500&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --coffee: #2C1A0E;
+  --coffee-mid: #4A2E1A;
+  --caramel: #8B5E3C;
+  --amber: #C4884A;
+  --honey: #D4A96A;
+  --latte: #E8D5B7;
+  --cream: #F5EDE0;
+  --warm-white: #FBF7F2;
+  --paper: #FDF9F4;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--coffee);
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 300;
+  line-height: 1.85;
+  overflow-x: hidden;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.4rem 3.5rem;
+  background: rgba(253,249,244,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(196,136,74,0.12);
+}
+.nav-logo { font-family: 'Lora',serif; font-style: italic; font-size: 1.15rem; letter-spacing: 0.1em; color: var(--coffee); text-decoration: none; }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a { font-size: 0.73rem; letter-spacing: 0.14em; color: var(--caramel); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--coffee); }
+
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+.hero-left {
+  background: var(--coffee);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 8rem 4rem 5rem 5rem;
+  position: relative; overflow: hidden;
+}
+.hero-left::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 20% 80%, rgba(196,136,74,0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: 'Caveat', cursive; font-size: 1.15rem; color: var(--honey);
+  margin-bottom: 1.2rem; opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards; position: relative;
+}
+.hero-title {
+  font-family: 'Lora', serif; font-style: italic;
+  font-size: clamp(3rem, 5.5vw, 5.2rem); line-height: 1.1; color: var(--latte);
+  margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards; position: relative;
+}
+.hero-title strong {
+  display: block; font-style: normal;
+  font-size: 0.36em; letter-spacing: 0.3em; color: var(--amber); font-weight: 400; margin-bottom: 0.5rem;
+}
+.hero-desc {
+  font-size: 0.87rem; color: rgba(232,213,183,0.5); line-height: 2;
+  max-width: 300px; margin-bottom: 3rem;
+  opacity: 0; animation: fadeUp 0.9s ease 0.7s forwards; position: relative;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 1rem;
+  padding: 0.95rem 2rem;
+  border: 1px solid rgba(196,136,74,0.4); color: var(--honey);
+  font-family: 'Lora', serif; font-style: italic; font-size: 0.9rem;
+  text-decoration: none; transition: all 0.3s; width: fit-content;
+  opacity: 0; animation: fadeUp 0.9s ease 0.9s forwards; position: relative;
+}
+.hero-cta:hover { background: rgba(196,136,74,0.1); border-color: var(--honey); }
+.hero-right {
+  background: var(--cream);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 8rem 3.5rem 4rem; position: relative; overflow: hidden;
+}
+.hero-right::before {
+  content: ''; position: absolute; bottom: -100px; right: -100px;
+  width: 420px; height: 420px; border-radius: 50%;
+  border: 90px solid rgba(196,136,74,0.06); pointer-events: none;
+}
+.hero-right::after {
+  content: ''; position: absolute; top: -50px; left: -50px;
+  width: 220px; height: 220px; border-radius: 50%;
+  border: 45px solid rgba(196,136,74,0.05); pointer-events: none;
+}
+.hero-quote-box {
+  text-align: center; max-width: 300px;
+  opacity: 0; animation: fadeIn 1.2s ease 1s forwards; position: relative;
+}
+.hero-quote-mark { font-family: 'Lora',serif; font-size: 5rem; color: rgba(196,136,74,0.18); line-height: 0.7; display: block; margin-bottom: 0.8rem; }
+.hero-quote { font-family: 'Lora',serif; font-style: italic; font-size: 1.25rem; color: var(--coffee-mid); line-height: 1.8; margin-bottom: 1.5rem; }
+.hero-quote-sub { font-family: 'Caveat',cursive; font-size: 1rem; color: var(--amber); }
+.hero-strip {
+  position: absolute; bottom: 2.5rem; left: 0; right: 0;
+  display: flex; justify-content: center; gap: 2.5rem;
+  opacity: 0; animation: fadeIn 1s ease 1.3s forwards;
+}
+.hero-strip-item { text-align: center; }
+.hero-strip-item span:first-child { display: block; font-size: 0.62rem; letter-spacing: 0.22em; color: var(--amber); text-transform: uppercase; margin-bottom: 0.2rem; }
+.hero-strip-item span:last-child { font-family: 'Lora',serif; font-size: 0.85rem; color: var(--coffee-mid); }
+
+.about {
+  padding: 8rem 6rem; background: var(--warm-white);
+  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 6rem; align-items: center;
+}
+.about-eyebrow { font-family: 'Caveat',cursive; font-size: 1.1rem; color: var(--amber); display: block; margin-bottom: 1rem; }
+.about-title { font-family: 'Lora',serif; font-size: clamp(1.9rem,3.5vw,2.8rem); line-height: 1.25; color: var(--coffee); margin-bottom: 2rem; }
+.about-title em { font-style: italic; color: var(--caramel); }
+.about-text p { font-size: 0.91rem; color: var(--coffee-mid); line-height: 2.1; margin-bottom: 1.2rem; }
+.about-text p:last-child { margin-bottom: 0; }
+.about-right { display: flex; flex-direction: column; gap: 1.5rem; }
+.about-card-dark {
+  background: var(--coffee); padding: 2.8rem 2.5rem; position: relative; overflow: hidden;
+}
+.about-card-dark::after {
+  content: '"'; position: absolute; bottom: -1rem; right: 1rem;
+  font-family: 'Lora',serif; font-size: 8rem; color: rgba(232,213,183,0.06); line-height: 1;
+}
+.about-card-dark-tag { font-size: 0.62rem; letter-spacing: 0.25em; color: var(--amber); text-transform: uppercase; display: block; margin-bottom: 1rem; }
+.about-card-dark-text { font-family: 'Lora',serif; font-style: italic; font-size: 1.15rem; color: var(--latte); line-height: 1.75; position: relative; }
+.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.about-stat { background: var(--cream); padding: 1.8rem 1.5rem; border-left: 3px solid var(--latte); }
+.about-stat-num { font-family: 'Lora',serif; font-style: italic; font-size: 1.9rem; color: var(--amber); display: block; line-height: 1; margin-bottom: 0.3rem; }
+.about-stat-label { font-size: 0.7rem; letter-spacing: 0.1em; color: var(--caramel); }
+
+.menu-section { padding: 8rem 6rem; background: var(--cream); }
+.menu-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; flex-wrap: wrap; gap: 1.5rem; }
+.menu-eyebrow { font-family: 'Caveat',cursive; font-size: 1.1rem; color: var(--amber); display: block; margin-bottom: 0.8rem; }
+.menu-title { font-family: 'Lora',serif; font-size: clamp(1.9rem,3.5vw,2.8rem); color: var(--coffee); }
+.menu-title em { font-style: italic; color: var(--caramel); }
+.menu-aside { font-family: 'Caveat',cursive; font-size: 0.95rem; color: var(--caramel); line-height: 1.65; max-width: 180px; text-align: right; }
+.menu-tabs { display: flex; border-bottom: 1px solid rgba(196,136,74,0.18); margin-bottom: 3rem; }
+.menu-tab {
+  padding: 0.85rem 2rem; font-family: 'Lora',serif; font-style: italic; font-size: 0.9rem;
+  color: var(--caramel); background: none; border: none; border-bottom: 2px solid transparent;
+  margin-bottom: -1px; cursor: pointer; transition: all 0.25s;
+}
+.menu-tab.active { color: var(--coffee); border-bottom-color: var(--amber); }
+.menu-panel { display: none; }
+.menu-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 0 5rem; }
+.menu-item { display: flex; justify-content: space-between; align-items: baseline; padding: 0.95rem 0; border-bottom: 1px solid rgba(196,136,74,0.1); }
+.menu-item-left { display: flex; align-items: baseline; gap: 0.5rem; flex: 1; }
+.menu-item-name { font-family: 'Noto Serif KR',serif; font-size: 0.9rem; color: var(--coffee); font-weight: 300; }
+.menu-item-badge { font-family: 'Caveat',cursive; font-size: 0.82rem; color: var(--amber); }
+.menu-dots { flex: 1; border-bottom: 1px dotted rgba(196,136,74,0.18); margin: 0 0.6rem 0.2rem; min-width: 1rem; }
+.menu-price { font-family: 'Lora',serif; font-style: italic; font-size: 0.88rem; color: var(--caramel); white-space: nowrap; }
+
+.features-section { padding: 8rem 6rem; background: var(--warm-white); }
+.features-head { text-align: center; margin-bottom: 5rem; }
+.features-eyebrow { font-family: 'Caveat',cursive; font-size: 1.1rem; color: var(--amber); display: block; margin-bottom: 0.8rem; }
+.features-title { font-family: 'Lora',serif; font-size: clamp(1.9rem,3.5vw,2.8rem); color: var(--coffee); }
+.features-title em { font-style: italic; color: var(--caramel); }
+.features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: rgba(196,136,74,0.15); }
+.feature-card { background: var(--paper); padding: 3.5rem 2.5rem; }
+.feature-icon { font-size: 1.8rem; display: block; margin-bottom: 1.5rem; }
+.feature-h3 { font-family: 'Lora',serif; font-style: italic; font-size: 1.15rem; color: var(--coffee); margin-bottom: 0.8rem; line-height: 1.4; }
+.feature-p { font-size: 0.83rem; color: var(--caramel); line-height: 1.95; }
+
+.pet-section {
+  background: var(--coffee); padding: 7.5rem 6rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+}
+.pet-eyebrow { font-family: 'Caveat',cursive; font-size: 1.1rem; color: var(--honey); display: block; margin-bottom: 1rem; }
+.pet-title { font-family: 'Lora',serif; font-size: clamp(1.9rem,3.5vw,2.8rem); color: var(--latte); line-height: 1.2; margin-bottom: 1.8rem; }
+.pet-title em { font-style: italic; color: var(--honey); }
+.pet-body p { font-size: 0.9rem; color: rgba(232,213,183,0.6); line-height: 2.05; margin-bottom: 1rem; }
+.pet-pill { display: inline-flex; align-items: center; gap: 0.6rem; margin-top: 1.2rem; padding: 0.75rem 1.6rem; border: 1px solid rgba(196,136,74,0.35); font-family: 'Caveat',cursive; font-size: 1rem; color: var(--honey); }
+.pet-right { display: flex; flex-direction: column; gap: 1.5rem; }
+.pet-quote-card { background: rgba(232,213,183,0.06); border-left: 3px solid var(--amber); padding: 2.2rem; }
+.pet-quote-text { font-family: 'Lora',serif; font-style: italic; font-size: 1rem; color: var(--latte); line-height: 1.8; margin-bottom: 0.8rem; }
+.pet-quote-author { font-size: 0.68rem; letter-spacing: 0.15em; color: var(--amber); text-transform: uppercase; }
+.pet-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.pet-tag { padding: 0.4rem 1rem; border: 1px solid rgba(196,136,74,0.22); font-size: 0.73rem; letter-spacing: 0.08em; color: rgba(232,213,183,0.45); }
+
+.reviews-section { padding: 8rem 6rem; background: var(--cream); }
+.reviews-eyebrow { font-family: 'Caveat',cursive; font-size: 1.1rem; color: var(--amber); display: block; margin-bottom: 0.8rem; }
+.reviews-title { font-family: 'Lora',serif; font-size: clamp(1.9rem,3.5vw,2.8rem); color: var(--coffee); margin-bottom: 4rem; }
+.reviews-title em { font-style: italic; color: var(--caramel); }
+.reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+.review-card { background: var(--warm-white); padding: 2.5rem 2rem; position: relative; }
+.review-card::before { content: '"'; position: absolute; top: 1.5rem; right: 2rem; font-family: 'Lora',serif; font-size: 3.5rem; color: rgba(196,136,74,0.1); line-height: 1; }
+.review-stars { font-size: 0.72rem; color: var(--honey); letter-spacing: 0.1em; display: block; margin-bottom: 1rem; }
+.review-text { font-size: 0.86rem; color: var(--coffee-mid); line-height: 1.9; margin-bottom: 1.5rem; }
+.review-author { display: flex; align-items: center; gap: 0.7rem; }
+.review-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--amber); flex-shrink: 0; }
+.review-name { font-size: 0.68rem; letter-spacing: 0.14em; color: var(--caramel); text-transform: uppercase; }
+
+.info-section { background: var(--warm-white); display: grid; grid-template-columns: 1fr 1fr; padding: 0; }
+.info-text { padding: 7rem 5rem 7rem 6rem; }
+.info-eyebrow { font-family: 'Caveat',cursive; font-size: 1.1rem; color: var(--amber); display: block; margin-bottom: 0.8rem; }
+.info-title { font-family: 'Lora',serif; font-style: italic; font-size: 2.4rem; color: var(--coffee); margin-bottom: 3rem; }
+.info-item { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(196,136,74,0.1); }
+.info-item:last-child { border-bottom: none; margin-bottom: 0; }
+.info-label { font-size: 0.63rem; letter-spacing: 0.25em; color: var(--amber); text-transform: uppercase; display: block; margin-bottom: 0.4rem; }
+.info-value { font-size: 0.9rem; color: var(--coffee-mid); line-height: 1.75; }
+.info-map { background: var(--coffee-mid); display: flex; align-items: center; justify-content: center; min-height: 500px; position: relative; overflow: hidden; }
+.info-map::before { content: 'DORFHAUS'; position: absolute; bottom: 2rem; right: 2rem; font-family: 'Lora',serif; font-style: italic; font-size: 3.5rem; color: rgba(232,213,183,0.05); pointer-events: none; white-space: nowrap; }
+.map-inner { text-align: center; padding: 3rem; position: relative; }
+.map-pin { font-size: 2rem; display: block; margin-bottom: 1.5rem; }
+.map-name-text { font-family: 'Lora',serif; font-style: italic; font-size: 1.8rem; color: var(--latte); display: block; margin-bottom: 0.8rem; }
+.map-addr-text { font-size: 0.82rem; color: rgba(232,213,183,0.48); line-height: 1.8; margin-bottom: 2rem; }
+.map-btn { display: inline-block; padding: 0.85rem 2rem; border: 1px solid rgba(196,136,74,0.4); color: var(--honey); font-family: 'Lora',serif; font-style: italic; font-size: 0.88rem; text-decoration: none; transition: all 0.3s; }
+.map-btn:hover { background: rgba(196,136,74,0.1); }
+
+footer { background: var(--coffee); padding: 4rem 6rem; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 3rem; border-bottom: 1px solid rgba(232,213,183,0.1); margin-bottom: 2rem; flex-wrap: wrap; gap: 2rem; }
+.footer-logo { font-family: 'Lora',serif; font-style: italic; font-size: 1.8rem; color: var(--latte); display: block; margin-bottom: 0.4rem; }
+.footer-tagline { font-family: 'Caveat',cursive; font-size: 0.98rem; color: var(--amber); }
+.footer-nav { display: flex; gap: 1.8rem; list-style: none; align-self: center; flex-wrap: wrap; }
+.footer-nav a { font-size: 0.7rem; letter-spacing: 0.14em; color: rgba(232,213,183,0.3); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+.footer-nav a:hover { color: var(--latte); }
+.footer-insta { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.4rem; border: 1px solid rgba(196,136,74,0.28); color: rgba(232,213,183,0.45); font-family: 'Lora',serif; font-style: italic; font-size: 0.85rem; text-decoration: none; transition: all 0.3s; align-self: center; }
+.footer-insta:hover { color: var(--honey); border-color: var(--amber); }
+.footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+.footer-copy { font-size: 0.68rem; color: rgba(232,213,183,0.18); }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+.reveal { opacity:0; transform:translateY(22px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 7rem 2rem 4rem; min-height: 65vh; }
+  .hero-right { padding: 4rem 2rem 5rem; min-height: 35vh; }
+  .hero-strip { bottom: 1.5rem; gap: 1.5rem; }
+  .about, .pet-section, .info-section { grid-template-columns: 1fr; }
+  .about { padding: 5rem 1.5rem; gap: 3rem; }
+  .menu-section, .features-section, .reviews-section { padding: 5rem 1.5rem; }
+  .pet-section { padding: 5rem 1.5rem; gap: 3rem; }
+  .info-text { padding: 4rem 1.5rem; }
+  .info-map { min-height: 280px; }
+  .menu-panel.active { grid-template-columns: 1fr; gap: 0; }
+  .features-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  footer { padding: 3rem 1.5rem; }
+  .footer-top { flex-direction: column; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Dorfhaus</a>
+  <ul class="nav-links">
+    <li><a href="#about">소개</a></li>
+    <li><a href="#menu">메뉴</a></li>
+    <li><a href="#pet">반려동물</a></li>
+    <li><a href="#reviews">리뷰</a></li>
+    <li><a href="#info">오시는 길</a></li>
+    <li><a href="https://www.instagram.com/cafe_dorfhaus" target="_blank">Instagram ↗</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">일산 밤리단길에서</p>
+    <h1 class="hero-title">
+      <strong>DORFHAUS</strong>
+      마을의 집,<br>따뜻한<br>자리 하나
+    </h1>
+    <p class="hero-desc">통창으로 들어오는 햇살, 우드톤 공간, 그리고 좋은 커피 한 잔. 서두르지 않아도 되는 시간이 여기 있습니다.</p>
+    <a class="hero-cta" href="#menu">메뉴 보기 →</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-quote-box">
+      <span class="hero-quote-mark">"</span>
+      <p class="hero-quote">넓고 쾌적한 공간과<br>맛있는 커피, 그리고<br>귀여운 하동이까지</p>
+      <span class="hero-quote-sub">— 단골 손님의 말</span>
+    </div>
+    <div class="hero-strip">
+      <div class="hero-strip-item"><span>영업시간</span><span>~ 20:00</span></div>
+      <div class="hero-strip-item"><span>풍산역에서</span><span>도보 5분</span></div>
+      <div class="hero-strip-item"><span>반려동물</span><span>동반 가능</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-text">
+    <span class="about-eyebrow reveal">우리 이야기</span>
+    <h2 class="about-title reveal">망원동에서 출발해<br><em>밤리단길에 뿌리내리다</em></h2>
+    <p class="reveal">DORFHAUS는 독일어로 '마을의 집'입니다. 마포 망원동에서 시작해 일산 밤리단길로 자리를 옮긴 지금도, 그 이름처럼 동네 사람들이 편하게 드나드는 집 같은 카페를 만들고 있습니다.</p>
+    <p class="reveal">넓은 통창으로 계절이 바뀌는 걸 바라보며, 고소한 커피 향 속에서 그냥 오래 앉아 있어도 좋은 곳입니다.</p>
+  </div>
+  <div class="about-right reveal">
+    <div class="about-card-dark">
+      <span class="about-card-dark-tag">Our Space</span>
+      <p class="about-card-dark-text">햇살이 가득한 통창,<br>식물들이 숨 쉬는 공간,<br>그리고 하동이</p>
+    </div>
+    <div class="about-stats">
+      <div class="about-stat"><span class="about-stat-num">20+</span><span class="about-stat-label">메뉴 종류</span></div>
+      <div class="about-stat"><span class="about-stat-num">20:00</span><span class="about-stat-label">영업 종료</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="menu-head">
+    <div>
+      <span class="menu-eyebrow reveal">메뉴</span>
+      <h2 class="menu-title reveal">오늘은 무엇을<br><em>드시겠어요</em></h2>
+    </div>
+    <p class="menu-aside reveal">귀여운 메뉴판은<br>자리에서 직접<br>확인하실 수 있어요</p>
+  </div>
+  <div class="menu-tabs reveal">
+    <button class="menu-tab active" onclick="switchTab(this,'tab1')">커피</button>
+    <button class="menu-tab" onclick="switchTab(this,'tab2')">논커피</button>
+    <button class="menu-tab" onclick="switchTab(this,'tab3')">디저트 & 푸드</button>
+  </div>
+  <div class="menu-panel active" id="tab1">
+    <div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">에스프레소</span></div><span class="menu-dots"></span><span class="menu-price">4,500원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">아메리카노</span></div><span class="menu-dots"></span><span class="menu-price">4,500원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">플랫화이트</span></div><span class="menu-dots"></span><span class="menu-price">5,000원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">카페 라떼</span></div><span class="menu-dots"></span><span class="menu-price">5,000원</span></div>
+    </div>
+    <div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">크림 라떼</span></div><span class="menu-dots"></span><span class="menu-price">5,500원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">바닐라빈 라떼</span><span class="menu-item-badge">추천</span></div><span class="menu-dots"></span><span class="menu-price">6,000원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">콜드브루</span></div><span class="menu-dots"></span><span class="menu-price">6,000원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">필터커피</span></div><span class="menu-dots"></span><span class="menu-price">6,500원</span></div>
+    </div>
+  </div>
+  <div class="menu-panel" id="tab2">
+    <div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">초코 라떼</span></div><span class="menu-dots"></span><span class="menu-price">6,000원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">말차 라떼</span></div><span class="menu-dots"></span><span class="menu-price">6,500원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">리얼 딸기라떼</span></div><span class="menu-dots"></span><span class="menu-price">6,500원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">레몬 에이드</span></div><span class="menu-dots"></span><span class="menu-price">6,000원</span></div>
+    </div>
+    <div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">피치라임 아이스티</span></div><span class="menu-dots"></span><span class="menu-price">6,500원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">레몬그라스</span></div><span class="menu-dots"></span><span class="menu-price">5,500원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">페퍼민트 허브차</span></div><span class="menu-dots"></span><span class="menu-price">5,500원</span></div>
+    </div>
+  </div>
+  <div class="menu-panel" id="tab3">
+    <div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">휘낭시에</span><span class="menu-item-badge">인기</span></div><span class="menu-dots"></span><span class="menu-price">3,300 ~ 3,500원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">애플청포도 레어치즈 케이크</span></div><span class="menu-dots"></span><span class="menu-price">7,500원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">레몬 레어치즈 케이크</span></div><span class="menu-dots"></span><span class="menu-price">7,500원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">브라우니 + 아이스크림</span></div><span class="menu-dots"></span><span class="menu-price">7,500원</span></div>
+    </div>
+    <div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">B.L.T 샌드위치 & 당근라페</span><span class="menu-item-badge">추천</span></div><span class="menu-dots"></span><span class="menu-price">13,000원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">B.E.L.T 샌드위치 & 당근라페</span></div><span class="menu-dots"></span><span class="menu-price">14,000원</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="features-section">
+  <div class="features-head">
+    <span class="features-eyebrow reveal">이런 곳이에요</span>
+    <h2 class="features-title reveal">도프하우스에서만<br><em>느낄 수 있는 것들</em></h2>
+  </div>
+  <div class="features-grid reveal">
+    <div class="feature-card">
+      <span class="feature-icon">🪟</span>
+      <h3 class="feature-h3">햇살이 가득한 통창 공간</h3>
+      <p class="feature-p">넓은 통창으로 계절이 바뀌는 걸 바라볼 수 있어요. 테이블 간격이 넉넉해서 오래 앉아 있어도 불편하지 않습니다.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🥪</span>
+      <h3 class="feature-h3">신선한 재료의 시그니처 샌드위치</h3>
+      <p class="feature-p">바삭한 빵과 당근라페의 조합. 한 번 먹으면 또 생각나는 메뉴입니다. 저녁 식사로도 충분해요.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🌿</span>
+      <h3 class="feature-h3">식물과 함께하는 따뜻한 분위기</h3>
+      <p class="feature-p">곳곳에 놓인 식물들이 공간을 생기 있게 만들어 줘요. 우드톤 인테리어와 어우러져 자연스럽고 편안합니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pet-section" id="pet">
+  <div>
+    <span class="pet-eyebrow reveal">반려동물 동반</span>
+    <h2 class="pet-title reveal">하동이가<br><em>기다리고 있어요</em></h2>
+    <div class="pet-body">
+      <p class="reveal">도프하우스는 반려동물과 함께 눈치 보지 않고 편하게 오실 수 있는 카페입니다. 상주견 하동이도 반갑게 맞아드립니다.</p>
+      <p class="reveal">넓은 공간 덕분에 반려동물도 여유 있게 쉬어갈 수 있어요.</p>
+    </div>
+    <div class="pet-pill reveal">🐾 반려동물 동반 환영</div>
+  </div>
+  <div class="pet-right">
+    <div class="pet-quote-card reveal">
+      <p class="pet-quote-text">강아지 동반할 수 있어서 너무 좋고, 샌드위치 커피 존맛... 너무 맛있어서 사진을 못 찍었네요.</p>
+      <span class="pet-quote-author">할라1712 · 네이버 리뷰</span>
+    </div>
+    <div class="pet-tags reveal">
+      <span class="pet-tag">반려동물 동반</span>
+      <span class="pet-tag">넓은 공간</span>
+      <span class="pet-tag">주차 가능</span>
+      <span class="pet-tag">배달 가능</span>
+      <span class="pet-tag">포장 가능</span>
+      <span class="pet-tag">단체 이용</span>
+    </div>
+  </div>
+</section>
+
+<section class="reviews-section" id="reviews">
+  <span class="reviews-eyebrow reveal">손님들의 이야기</span>
+  <h2 class="reviews-title reveal">직접 다녀온<br><em>분들의 말</em></h2>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <span class="review-stars">★★★★★</span>
+      <p class="review-text">넓고 쾌적한 매장과 너무 맛있는 커피와 디저트. 오시면 꼭 휘낭시에와 라떼 드셔보세요. 귀여운 상주견 하동이도 있답니다.</p>
+      <div class="review-author"><div class="review-dot"></div><span class="review-name">다효디 · 네이버</span></div>
+    </div>
+    <div class="review-card reveal">
+      <span class="review-stars">★★★★★</span>
+      <p class="review-text">BLT 샌드위치, 빵이 너무 맛있어서 진짜 깜짝 놀랐어요. 여기서 샌드위치 안 드신 분들 꼭 드셔보세요. 먹어볼 만합니다.</p>
+      <div class="review-author"><div class="review-dot"></div><span class="review-name">잃어버린 너구리 · 네이버</span></div>
+    </div>
+    <div class="review-card reveal">
+      <span class="review-stars">★★★★★</span>
+      <p class="review-text">바닐라빈 라떼 아주 극호. 공간도 넓고 주차도 편하고, 반려동물도 편하게 데려갈 수 있어서 종종 오게 될 것 같아요.</p>
+      <div class="review-author"><div class="review-dot"></div><span class="review-name">겨란이 · 네이버</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="info-section" id="info">
+  <div class="info-text">
+    <span class="info-eyebrow reveal">오시는 길</span>
+    <h2 class="info-title reveal">찾아오세요</h2>
+    <div class="info-item reveal">
+      <span class="info-label">주소</span>
+      <span class="info-value">경기 고양시 일산동구 경의로 459-84 1층<br><span style="color:var(--amber);font-size:0.82rem;">풍산역 1번 출구에서 도보 5분</span></span>
+    </div>
+    <div class="info-item reveal">
+      <span class="info-label">영업시간</span>
+      <span class="info-value">매일 영업 · 20:00 마감<br><span style="color:var(--amber);font-size:0.82rem;">목요일 정기휴무</span></span>
+    </div>
+    <div class="info-item reveal">
+      <span class="info-label">전화</span>
+      <span class="info-value"><a href="tel:0507-1433-2704" style="color:var(--coffee-mid);text-decoration:none;">0507-1433-2704</a></span>
+    </div>
+    <div class="info-item reveal">
+      <span class="info-label">편의</span>
+      <span class="info-value">포장 · 단체 이용 · 배달<br>반려동물 동반 · 간편결제 · 주차</span>
+    </div>
+    <div class="info-item reveal">
+      <span class="info-label">인스타그램</span>
+      <span class="info-value"><a href="https://www.instagram.com/cafe_dorfhaus" target="_blank" style="color:var(--amber);text-decoration:none;">@cafe_dorfhaus ↗</a></span>
+    </div>
+  </div>
+  <div class="info-map">
+    <div class="map-inner">
+      <span class="map-pin">📍</span>
+      <span class="map-name-text">Dorfhaus</span>
+      <p class="map-addr-text">일산동구 경의로 459-84 1층<br>밤가시마을 · 풍산역 1번 출구</p>
+      <a class="map-btn" href="https://map.naver.com/p/search/DORFHAUS%20%EC%9D%BC%EC%82%B0" target="_blank">네이버 지도로 보기 →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <span class="footer-logo">Dorfhaus</span>
+      <span class="footer-tagline">넓은 공간에서 즐기는 여유로운 시간</span>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="#about">소개</a></li>
+      <li><a href="#menu">메뉴</a></li>
+      <li><a href="#pet">반려동물</a></li>
+      <li><a href="#reviews">리뷰</a></li>
+      <li><a href="#info">오시는 길</a></li>
+    </ul>
+    <a class="footer-insta" href="https://www.instagram.com/cafe_dorfhaus" target="_blank">@cafe_dorfhaus ↗</a>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">경기 고양시 일산동구 경의로 459-84 1층</p>
+    <p class="footer-copy">0507-1433-2704 &nbsp;·&nbsp; 목요일 정기휴무</p>
+  </div>
+</footer>
+
+<script>
+  function switchTab(btn, id) {
+    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(id).classList.add('active');
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
