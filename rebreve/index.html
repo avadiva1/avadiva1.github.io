@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="리브리브 밤리단길점 — 일산 제로웨이스트 카페. 프렌치토스트 맛집. 경기 고양시 일산동구 일산로394번길 18 1층">
+<title>Re:breve 리브리브 — 일산 밤리단길</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green-deep: #182C1E;
+  --green-mid: #2C4C36;
+  --green: #4A7A58;
+  --sage: #7AAB88;
+  --mint: #B2CEBC;
+  --pale: #D8EAE0;
+  --cream: #F3EFE6;
+  --warm-white: #FAF8F4;
+  --paper: #FDFCF8;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--green-deep);
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 300;
+  line-height: 1.85;
+  overflow-x: hidden;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.3rem 3.5rem;
+  background: rgba(253,252,248,0.93);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(74,122,88,0.1);
+}
+.nav-logo { font-family: 'Cormorant Garamond',serif; font-style: italic; font-size: 1.2rem; letter-spacing: 0.06em; color: var(--green-deep); text-decoration: none; }
+.nav-logo span { color: var(--green); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.73rem; letter-spacing: 0.12em; color: var(--green); text-decoration: none; transition: color 0.2s; font-weight: 400; }
+.nav-links a:hover { color: var(--green-deep); }
+
+/* HERO */
+.hero { min-height: 100vh; background: var(--green-deep); display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+.hero-left { display: flex; flex-direction: column; justify-content: flex-end; padding: 8rem 4rem 5rem 5.5rem; position: relative; overflow: hidden; }
+.hero-left::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 55% at 25% 75%, rgba(74,122,88,0.22) 0%, transparent 60%); pointer-events: none; }
+.hero-tag { font-size: 0.72rem; letter-spacing: 0.3em; color: var(--sage); text-transform: uppercase; margin-bottom: 1.8rem; opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards; position: relative; }
+.hero-title { font-family: 'Cormorant Garamond',serif; font-style: italic; font-size: clamp(3.5rem,6.5vw,6rem); line-height: 1.05; color: var(--mint); margin-bottom: 0.6rem; opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards; position: relative; }
+.hero-title-kr { font-size: clamp(0.85rem,1.5vw,1.1rem); font-style: normal; font-family: 'Noto Serif KR',serif; font-weight: 300; letter-spacing: 0.2em; color: var(--sage); display: block; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.9s ease 0.65s forwards; position: relative; }
+.hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.9s ease 0.78s forwards; position: relative; }
+.hero-badge { padding: 0.38rem 1rem; border: 1px solid rgba(122,171,136,0.35); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--mint); }
+.hero-desc { font-size: 0.88rem; color: rgba(178,206,188,0.55); line-height: 2; max-width: 320px; margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.9s ease 0.9s forwards; position: relative; }
+.hero-cta { display: inline-flex; align-items: center; gap: 0.8rem; padding: 0.95rem 2.2rem; border: 1px solid rgba(122,171,136,0.4); color: var(--mint); font-size: 0.82rem; letter-spacing: 0.1em; text-decoration: none; transition: all 0.3s; width: fit-content; opacity: 0; animation: fadeUp 0.9s ease 1.05s forwards; position: relative; }
+.hero-cta:hover { background: rgba(74,122,88,0.18); border-color: var(--sage); }
+.hero-right { background: var(--green-mid); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8rem 3.5rem 4rem; position: relative; overflow: hidden; }
+.hero-right::before { content: ''; position: absolute; bottom: -80px; right: -80px; width: 360px; height: 360px; border-radius: 50%; border: 70px solid rgba(178,206,188,0.07); pointer-events: none; }
+.hero-quote-wrap { text-align: center; max-width: 300px; opacity: 0; animation: fadeIn 1.2s ease 1s forwards; position: relative; }
+.hero-quote-mark { font-family: 'Cormorant Garamond',serif; font-size: 5rem; color: rgba(178,206,188,0.18); line-height: 0.7; display: block; margin-bottom: 1rem; }
+.hero-quote { font-family: 'Cormorant Garamond',serif; font-style: italic; font-size: 1.3rem; color: var(--mint); line-height: 1.8; margin-bottom: 1.5rem; }
+.hero-quote-sub { font-size: 0.68rem; letter-spacing: 0.2em; color: var(--sage); text-transform: uppercase; font-weight: 400; }
+.hero-strip { position: absolute; bottom: 2.5rem; left: 0; right: 0; display: flex; justify-content: center; gap: 2.5rem; opacity: 0; animation: fadeIn 1s ease 1.3s forwards; }
+.hero-strip-item { text-align: center; }
+.hero-strip-item span:first-child { display: block; font-size: 0.62rem; letter-spacing: 0.22em; color: var(--sage); text-transform: uppercase; margin-bottom: 0.25rem; }
+.hero-strip-item span:last-child { font-family: 'Cormorant Garamond',serif; font-size: 1rem; color: var(--mint); }
+
+/* SECTION COMMON */
+.sec-label { font-size: 0.68rem; letter-spacing: 0.3em; color: var(--green); text-transform: uppercase; display: block; margin-bottom: 1.2rem; font-weight: 400; }
+.sec-title { font-family: 'Cormorant Garamond',serif; font-size: clamp(2rem,3.8vw,3rem); line-height: 1.2; color: var(--green-deep); margin-bottom: 2rem; }
+.sec-title em { font-style: italic; color: var(--green); }
+
+/* ABOUT */
+.about { display: grid; grid-template-columns: 1fr 1fr; background: var(--warm-white); }
+.about-text { padding: 7rem 5rem 7rem 6rem; display: flex; flex-direction: column; justify-content: center; }
+.about-body p { font-size: 0.91rem; color: #344A3C; line-height: 2.1; margin-bottom: 1.2rem; }
+.about-body p:last-child { margin-bottom: 0; }
+.about-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2.5rem; }
+.about-pill { padding: 0.35rem 1rem; border: 1px solid rgba(74,122,88,0.22); background: rgba(74,122,88,0.06); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--green); font-weight: 400; }
+.about-visual { background: var(--green-mid); min-height: 540px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.about-visual::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 40% 60%, rgba(122,171,136,0.2) 0%, transparent 65%); }
+.about-quote-box { padding: 3rem; text-align: center; position: relative; }
+.about-quote { font-family: 'Cormorant Garamond',serif; font-style: italic; font-size: 1.3rem; color: var(--mint); line-height: 1.85; margin-bottom: 1.5rem; }
+.about-quote-attr { font-size: 0.68rem; letter-spacing: 0.22em; color: var(--sage); text-transform: uppercase; font-weight: 400; }
+
+/* ZERO WASTE */
+.zero { background: var(--cream); padding: 7.5rem 6rem; }
+.zero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.zero-body p { font-size: 0.91rem; color: #344A3C; line-height: 2.1; margin-bottom: 1rem; }
+.zero-highlight { display: inline-flex; align-items: center; gap: 1rem; margin-top: 2rem; padding: 1.2rem 1.8rem; background: var(--green-deep); }
+.zero-highlight-text { font-size: 0.82rem; color: rgba(178,206,188,0.7); line-height: 1.65; }
+.zero-highlight-text strong { display: block; font-size: 0.92rem; color: var(--mint); font-weight: 400; margin-bottom: 0.2rem; }
+.zero-cards { display: flex; flex-direction: column; gap: 1.5rem; }
+.zero-card { background: var(--warm-white); padding: 2rem; border-left: 3px solid var(--pale); }
+.zero-card-icon { font-size: 1.4rem; display: block; margin-bottom: 0.7rem; }
+.zero-card-title { font-size: 0.95rem; color: var(--green-deep); margin-bottom: 0.5rem; font-weight: 400; }
+.zero-card-text { font-size: 0.82rem; color: #5A7060; line-height: 1.8; }
+
+/* MENU */
+.menu-section { background: var(--green-deep); padding: 7.5rem 6rem; }
+.menu-section .sec-label { color: var(--sage); }
+.menu-section .sec-title { color: var(--warm-white); margin-bottom: 4rem; }
+.menu-section .sec-title em { color: var(--sage); }
+.menu-tabs { display: flex; border-bottom: 1px solid rgba(122,171,136,0.18); margin-bottom: 3rem; }
+.menu-tab { padding: 0.85rem 2rem; font-size: 0.82rem; letter-spacing: 0.1em; color: rgba(178,206,188,0.45); background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; transition: all 0.25s; font-family: 'Noto Serif KR',serif; font-weight: 300; }
+.menu-tab.active { color: var(--mint); border-bottom-color: var(--sage); }
+.menu-panel { display: none; }
+.menu-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 0 5rem; }
+.menu-item { display: flex; justify-content: space-between; align-items: baseline; padding: 0.95rem 0; border-bottom: 1px solid rgba(122,171,136,0.1); }
+.menu-item-left { display: flex; align-items: baseline; gap: 0.5rem; flex: 1; }
+.menu-item-name { font-size: 0.88rem; color: rgba(178,206,188,0.82); font-weight: 300; }
+.menu-item-badge { font-size: 0.72rem; color: var(--sage); letter-spacing: 0.06em; }
+.menu-dots { flex: 1; border-bottom: 1px dotted rgba(122,171,136,0.14); margin: 0 0.6rem 0.2rem; min-width: 1rem; }
+.menu-price { font-family: 'Cormorant Garamond',serif; font-style: italic; font-size: 0.92rem; color: var(--sage); white-space: nowrap; }
+
+/* REVIEWS */
+.reviews-section { background: var(--cream); padding: 7.5rem 6rem; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3.5rem; }
+.review-card { background: var(--warm-white); padding: 2.5rem 2rem; border-top: 3px solid var(--pale); position: relative; }
+.review-card::before { content: '"'; position: absolute; top: 1.5rem; right: 2rem; font-family: 'Cormorant Garamond',serif; font-size: 3.5rem; color: rgba(74,122,88,0.1); line-height: 1; }
+.review-stars { font-size: 0.72rem; color: var(--green); letter-spacing: 0.1em; display: block; margin-bottom: 1rem; }
+.review-text { font-size: 0.86rem; color: #344A3C; line-height: 1.9; margin-bottom: 1.5rem; }
+.review-author { display: flex; align-items: center; gap: 0.7rem; }
+.review-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--sage); flex-shrink: 0; }
+.review-name { font-size: 0.68rem; letter-spacing: 0.14em; color: var(--green); text-transform: uppercase; font-weight: 400; }
+
+/* INFO */
+.info-section { background: var(--warm-white); display: grid; grid-template-columns: 1fr 1fr; }
+.info-text { padding: 7rem 5rem 7rem 6rem; }
+.info-item { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(74,122,88,0.1); }
+.info-item:last-child { border-bottom: none; margin-bottom: 0; }
+.info-label { font-size: 0.63rem; letter-spacing: 0.25em; color: var(--green); text-transform: uppercase; display: block; margin-bottom: 0.4rem; font-weight: 400; }
+.info-value { font-size: 0.9rem; color: #344A3C; line-height: 1.75; }
+.info-map { background: var(--green-mid); display: flex; align-items: center; justify-content: center; min-height: 500px; position: relative; overflow: hidden; }
+.info-map::before { content: 'Re:breve'; position: absolute; bottom: 2rem; right: 2rem; font-family: 'Cormorant Garamond',serif; font-style: italic; font-size: 3.5rem; color: rgba(178,206,188,0.06); pointer-events: none; white-space: nowrap; }
+.map-inner { text-align: center; padding: 3rem; position: relative; }
+.map-pin { font-size: 2rem; display: block; margin-bottom: 1.5rem; }
+.map-name { font-family: 'Cormorant Garamond',serif; font-style: italic; font-size: 2rem; color: var(--mint); display: block; margin-bottom: 0.8rem; }
+.map-addr { font-size: 0.82rem; color: rgba(178,206,188,0.5); line-height: 1.8; margin-bottom: 2rem; }
+.map-btn { display: inline-block; padding: 0.85rem 2rem; border: 1px solid rgba(122,171,136,0.4); color: var(--mint); font-size: 0.82rem; letter-spacing: 0.1em; text-decoration: none; transition: all 0.3s; }
+.map-btn:hover { background: rgba(74,122,88,0.18); }
+
+/* FOOTER */
+footer { background: var(--green-deep); padding: 4rem 6rem; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 3rem; border-bottom: 1px solid rgba(178,206,188,0.1); margin-bottom: 2rem; flex-wrap: wrap; gap: 2rem; }
+.footer-logo { font-family: 'Cormorant Garamond',serif; font-style: italic; font-size: 1.9rem; color: var(--mint); display: block; margin-bottom: 0.4rem; }
+.footer-tagline { font-size: 0.8rem; color: var(--sage); letter-spacing: 0.06em; }
+.footer-nav { display: flex; gap: 1.8rem; list-style: none; align-self: center; flex-wrap: wrap; }
+.footer-nav a { font-size: 0.7rem; letter-spacing: 0.14em; color: rgba(178,206,188,0.3); text-decoration: none; text-transform: uppercase; transition: color 0.2s; font-weight: 400; }
+.footer-nav a:hover { color: var(--mint); }
+.footer-insta { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.4rem; border: 1px solid rgba(122,171,136,0.25); color: rgba(178,206,188,0.42); font-size: 0.78rem; letter-spacing: 0.1em; text-decoration: none; transition: all 0.3s; align-self: center; }
+.footer-insta:hover { color: var(--mint); border-color: var(--sage); }
+.footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+.footer-copy { font-size: 0.68rem; color: rgba(178,206,188,0.18); }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+.reveal { opacity:0; transform:translateY(22px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 7rem 2rem 4rem; min-height: 65vh; }
+  .hero-right { padding: 4rem 2rem 5rem; }
+  .hero-strip { gap: 1.8rem; }
+  .about, .info-section { grid-template-columns: 1fr; }
+  .about-text { padding: 4rem 1.5rem; }
+  .about-visual { min-height: 260px; }
+  .zero { padding: 5rem 1.5rem; }
+  .zero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .menu-section, .reviews-section { padding: 5rem 1.5rem; }
+  .menu-panel.active { grid-template-columns: 1fr; gap: 0; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .info-text { padding: 4rem 1.5rem; }
+  .info-map { min-height: 280px; }
+  footer { padding: 3rem 1.5rem; }
+  .footer-top { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#"><span>Re:</span>breve</a>
+  <ul class="nav-links">
+    <li><a href="#about">소개</a></li>
+    <li><a href="#zero">제로웨이스트</a></li>
+    <li><a href="#menu">메뉴</a></li>
+    <li><a href="#reviews">리뷰</a></li>
+    <li><a href="#info">오시는 길</a></li>
+    <li><a href="https://www.instagram.com/re_breve_" target="_blank">Instagram ↗</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">일산 밤리단길 · Zero Waste Café</p>
+    <h1 class="hero-title">Re:breve</h1>
+    <span class="hero-title-kr">리브리브 밤리단길점</span>
+    <div class="hero-badges">
+      <span class="hero-badge">프렌치토스트 맛집</span>
+      <span class="hero-badge">친환경 소품</span>
+      <span class="hero-badge">텀블러 할인</span>
+    </div>
+    <p class="hero-desc">커피 한 잔을 마시면서도 환경을 생각하는 작은 실천. 맛있는 디저트와 좋은 공간이 함께합니다.</p>
+    <a class="hero-cta" href="#menu">메뉴 보기 →</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-quote-wrap">
+      <span class="hero-quote-mark">"</span>
+      <p class="hero-quote">단순히 예쁜 공간을 넘어<br>환경을 생각하는 작은<br>실천을 함께하는 곳</p>
+      <span class="hero-quote-sub">— 방문 손님의 말</span>
+    </div>
+    <div class="hero-strip">
+      <div class="hero-strip-item"><span>영업시간</span><span>11:00 ~ 22:00</span></div>
+      <div class="hero-strip-item"><span>정기휴무</span><span>수요일</span></div>
+      <div class="hero-strip-item"><span>풍산역에서</span><span>도보 5분</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-text">
+    <span class="sec-label reveal">About</span>
+    <h2 class="sec-title reveal">환경까지 생각한<br><em>착한 카페</em></h2>
+    <div class="about-body">
+      <p class="reveal">리브리브는 일산 밤리단길의 제로웨이스트 카페입니다. 맛있는 프렌치토스트와 커피를 즐기면서 동시에 환경을 생각하는 실천을 함께할 수 있는 공간입니다.</p>
+      <p class="reveal">우드톤과 초록 인테리어가 어우러진 아늑한 공간에 테라스 좌석까지 갖춰져 있어 날씨 좋은 날엔 밖에서도 여유롭게 즐길 수 있습니다.</p>
+    </div>
+    <div class="about-pills reveal">
+      <span class="about-pill">제로웨이스트</span>
+      <span class="about-pill">테라스 좌석</span>
+      <span class="about-pill">반려동물 동반</span>
+      <span class="about-pill">주차 가능</span>
+      <span class="about-pill">배달 가능</span>
+      <span class="about-pill">예약 가능</span>
+    </div>
+  </div>
+  <div class="about-visual">
+    <div class="about-quote-box">
+      <p class="about-quote">"우드 톤이랑 초록 인테리어 조화가<br>편안하고 따스한 느낌이 가득했어요.<br>완전 제 취향"</p>
+      <span class="about-quote-attr">— 블로그 리뷰 중</span>
+    </div>
+  </div>
+</section>
+
+<section class="zero" id="zero">
+  <div class="zero-inner">
+    <div>
+      <span class="sec-label reveal">Zero Waste</span>
+      <h2 class="sec-title reveal">커피 한 잔으로<br><em>지구에 보내는<br>작은 인사</em></h2>
+      <div class="zero-body">
+        <p class="reveal">리브리브는 제로웨이스트 실천 매장입니다. 테이크아웃 컵도 전부 친환경 컵을 사용하고, 텀블러를 가져오면 할인도 받을 수 있어요.</p>
+        <p class="reveal">매장 한편에는 텀블러, 수세미, 비누, 식기류 등 감각적인 친환경 소품도 판매하고 있어서 구경하는 재미도 있습니다.</p>
+      </div>
+      <div class="zero-highlight reveal">
+        <span style="font-size:1.4rem;">♻️</span>
+        <div class="zero-highlight-text">
+          <strong>텀블러 지참 시 1,500원 할인</strong>
+          제로웨이스트 실천 매장 · 친환경 컵 사용
+        </div>
+      </div>
+    </div>
+    <div class="zero-cards reveal">
+      <div class="zero-card">
+        <span class="zero-card-icon">🌱</span>
+        <h3 class="zero-card-title">친환경 소품 판매</h3>
+        <p class="zero-card-text">텀블러, 유리 빨대, 수세미, 비누, 나무 커틀러리까지. 생활 속 제로웨이스트 아이템들을 만날 수 있어요.</p>
+      </div>
+      <div class="zero-card">
+        <span class="zero-card-icon">☕</span>
+        <h3 class="zero-card-title">친환경 테이크아웃 컵</h3>
+        <p class="zero-card-text">포장 시에도 친환경 컵을 사용합니다. 텀블러를 가져오시면 추가 할인 혜택도 드려요.</p>
+      </div>
+      <div class="zero-card">
+        <span class="zero-card-icon">🪴</span>
+        <h3 class="zero-card-title">플랜테리어 공간</h3>
+        <p class="zero-card-text">곳곳에 놓인 화분과 초록 인테리어. 자연스럽게 어우러진 따뜻한 공간입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <span class="sec-label reveal">Menu</span>
+  <h2 class="sec-title reveal">오늘의<br><em>선택은</em></h2>
+  <div class="menu-tabs reveal">
+    <button class="menu-tab active" onclick="switchTab(this,'tab1')">프렌치토스트</button>
+    <button class="menu-tab" onclick="switchTab(this,'tab2')">커피</button>
+    <button class="menu-tab" onclick="switchTab(this,'tab3')">음료 & 기타</button>
+  </div>
+  <div class="menu-panel active" id="tab1">
+    <div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">플레인 프렌치토스트</span></div><span class="menu-dots"></span><span class="menu-price">9,000원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">블루베리 콩포트 프렌치토스트</span><span class="menu-item-badge">추천</span></div><span class="menu-dots"></span><span class="menu-price">10,000원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">스트로베리 콩포트 프렌치토스트</span></div><span class="menu-dots"></span><span class="menu-price">10,000원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">크림브륄레 프렌치토스트</span></div><span class="menu-dots"></span><span class="menu-price">11,500원</span></div>
+    </div>
+    <div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">크림브륄레 베이글</span></div><span class="menu-dots"></span><span class="menu-price">매장 확인</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">아이스크림 호떡</span><span class="menu-item-badge">시즌</span></div><span class="menu-dots"></span><span class="menu-price">매장 확인</span></div>
+    </div>
+  </div>
+  <div class="menu-panel" id="tab2">
+    <div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">아메리카노</span><span class="menu-item-badge">인기 1위</span></div><span class="menu-dots"></span><span class="menu-price">매장 확인</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">카페 라떼</span><span class="menu-item-badge">인기 3위</span></div><span class="menu-dots"></span><span class="menu-price">매장 확인</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">시그니처 라떼</span></div><span class="menu-dots"></span><span class="menu-price">5,500원</span></div>
+    </div>
+    <div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">코코넛 라떼</span></div><span class="menu-dots"></span><span class="menu-price">매장 확인</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">디카페인 가능</span></div><span class="menu-dots"></span><span class="menu-price">—</span></div>
+    </div>
+  </div>
+  <div class="menu-panel" id="tab3">
+    <div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">블루베리 요거트 스무디</span></div><span class="menu-dots"></span><span class="menu-price">6,000원</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">스콘</span></div><span class="menu-dots"></span><span class="menu-price">매장 확인</span></div>
+    </div>
+    <div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-name">전체 메뉴 24종</span></div><span class="menu-dots"></span><span class="menu-price">매장에서 확인</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews-section" id="reviews">
+  <span class="sec-label reveal">Reviews</span>
+  <h2 class="sec-title reveal">손님들의<br><em>이야기</em></h2>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <span class="review-stars">★★★★★</span>
+      <p class="review-text">버터 향이랑 달콤한 블루베리 콩포트가 진짜 잘 어울렸어요. 분명 배부른 상태였는데 계속 먹었어요. 블루베리 콩포트는 아낌없이 주셔서 토스트 다 먹고도 남아있을 정도였어요.</p>
+      <div class="review-author"><div class="review-dot"></div><span class="review-name">이혜 · 블로그</span></div>
+    </div>
+    <div class="review-card reveal">
+      <span class="review-stars">★★★★★</span>
+      <p class="review-text">친환경 테마라 텀블러 할인도 해주고 분위기도 마음에 들어요. 제로웨이스트 실천매장이라 관심 있는 분들께 특히 추천드려요.</p>
+      <div class="review-author"><div class="review-dot"></div><span class="review-name">라미89 · 네이버</span></div>
+    </div>
+    <div class="review-card reveal">
+      <span class="review-stars">★★★★★</span>
+      <p class="review-text">아이랑 카페에 갈 때는 주차와 쾌적한 장소가 중요한데, 리브리브는 전반적으로 모든 면에서 만족스러운 카페랍니다.</p>
+      <div class="review-author"><div class="review-dot"></div><span class="review-name">루리닌 · 네이버</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="info-section" id="info">
+  <div class="info-text">
+    <span class="sec-label reveal">Visit</span>
+    <h2 class="sec-title reveal" style="font-style:italic;">찾아오세요</h2>
+    <div class="info-item reveal">
+      <span class="info-label">주소</span>
+      <span class="info-value">경기 고양시 일산동구 일산로394번길 18 1층<br><span style="color:var(--green);font-size:0.82rem;">풍산역 1번 출구 · 도보 5분 · 갓잇 맞은편</span></span>
+    </div>
+    <div class="info-item reveal">
+      <span class="info-label">영업시간</span>
+      <span class="info-value">11:00 ~ 22:00<br><span style="color:var(--green);font-size:0.82rem;">수요일 정기휴무</span></span>
+    </div>
+    <div class="info-item reveal">
+      <span class="info-label">전화</span>
+      <span class="info-value"><a href="tel:0507-1363-9829" style="color:#344A3C;text-decoration:none;">0507-1363-9829</a></span>
+    </div>
+    <div class="info-item reveal">
+      <span class="info-label">편의</span>
+      <span class="info-value">예약 · 단체 이용 · 반려동물 동반<br>배달 · 포장 · 무선인터넷 · 주차</span>
+    </div>
+    <div class="info-item reveal">
+      <span class="info-label">인스타그램</span>
+      <span class="info-value"><a href="https://www.instagram.com/re_breve_" target="_blank" style="color:var(--green);text-decoration:none;">@re_breve_ ↗</a></span>
+    </div>
+  </div>
+  <div class="info-map">
+    <div class="map-inner">
+      <span class="map-pin">📍</span>
+      <span class="map-name">Re:breve</span>
+      <p class="map-addr">일산동구 일산로394번길 18 1층<br>풍산역 1번 출구 · 도보 5분</p>
+      <a class="map-btn" href="https://map.naver.com/p/search/%EB%A6%AC%EB%B8%8C%EB%A6%AC%EB%B8%8C%20%EB%B0%A4%EB%A6%AC%EB%8B%A8%EA%B8%B8" target="_blank">네이버 지도로 보기 →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <span class="footer-logo">Re:breve</span>
+      <span class="footer-tagline">환경까지 생각한 착한 카페 · 일산 밤리단길</span>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="#about">소개</a></li>
+      <li><a href="#zero">제로웨이스트</a></li>
+      <li><a href="#menu">메뉴</a></li>
+      <li><a href="#reviews">리뷰</a></li>
+      <li><a href="#info">오시는 길</a></li>
+    </ul>
+    <a class="footer-insta" href="https://www.instagram.com/re_breve_" target="_blank">@re_breve_ ↗</a>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">경기 고양시 일산동구 일산로394번길 18 1층</p>
+    <p class="footer-copy">0507-1363-9829 · 수요일 정기휴무</p>
+  </div>
+</footer>
+
+<script>
+  function switchTab(btn, id) {
+    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(id).classList.add('active');
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
